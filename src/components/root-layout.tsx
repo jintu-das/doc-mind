@@ -8,7 +8,7 @@ export const RootLayout = () => (
     <AppSidebar />
 
     <SidebarInset>
-      <main>
+      <main className="h-full bg-background p-4">
         <Outlet />
       </main>
     </SidebarInset>

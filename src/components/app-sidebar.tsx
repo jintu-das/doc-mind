@@ -1,11 +1,12 @@
-import * as React from "react"
-import { Link, useRouterState } from "@tanstack/react-router"
+import { Link, useRouterState } from "@tanstack/react-router";
 import {
-  ChatCircleDotsIcon,
-  FileTextIcon,
-  MagnifyingGlassIcon,
-  SquaresFourIcon,
-} from "@phosphor-icons/react"
+  Bot,
+  FileBoxIcon,
+  FileText,
+  LayoutDashboard,
+  Search,
+} from "lucide-react";
+import * as React from "react";
 
 import {
   Sidebar,
@@ -17,38 +18,52 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 
 const navMain = [
   {
     title: "Dashboard",
     url: "/",
-    icon: SquaresFourIcon,
+    icon: LayoutDashboard,
   },
   {
     title: "Documents",
     url: "/documents",
-    icon: FileTextIcon,
+    icon: FileText,
   },
   {
     title: "AI Assistant",
     url: "/ai-assistant",
-    icon: ChatCircleDotsIcon,
+    icon: Bot,
   },
   {
     title: "Semantic Search",
     url: "/semantic-search",
-    icon: MagnifyingGlassIcon,
+    icon: Search,
   },
-]
+];
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const pathname = useRouterState({ select: (state) => state.location.pathname })
+  const pathname = useRouterState({
+    select: (state) => state.location.pathname,
+  });
 
   return (
     <Sidebar {...props}>
       <SidebarHeader>
-        <span className="px-2 py-1.5 text-sm font-semibold">Doc Mind</span>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton size="lg" render={<Link to="/" />}>
+              <div className="bg-sidebar-primary/20 flex aspect-square size-8 items-center justify-center">
+                <FileBoxIcon className="size-4" />
+              </div>
+              <div className="grid flex-1 text-left text-sm leading-tight">
+                <span className="truncate font-semibold">Doc Mind</span>
+                <span className="truncate text-xs">AI Intelligence</span>
+              </div>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
@@ -57,7 +72,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               {navMain.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton
+                    variant="default"
                     isActive={pathname === item.url}
+                    // className="hover:bg-primary/10! hover:text-primary! data-active:bg-primary! data-active:text-primary-foreground! data-active:hover:bg-primary! data-active:hover:text-primary-foreground!"
                     render={<Link to={item.url} />}
                   >
                     <item.icon />
@@ -71,5 +88,5 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarContent>
       <SidebarRail />
     </Sidebar>
-  )
+  );
 }

@@ -55,7 +55,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" render={<Link to="/" />}>
               <div className="bg-sidebar-primary/20 flex aspect-square size-8 items-center justify-center">
-                <FileBoxIcon className="size-4" />
+                <FileBoxIcon className="size-4" aria-hidden="true" />
               </div>
               <div className="grid flex-1 text-left text-sm leading-tight">
                 <span className="truncate font-semibold">Doc Mind</span>
@@ -68,21 +68,23 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupContent>
-            <SidebarMenu>
-              {navMain.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton
-                    variant="default"
-                    isActive={pathname === item.url}
-                    // className="hover:bg-primary/10! hover:text-primary! data-active:bg-primary! data-active:text-primary-foreground! data-active:hover:bg-primary! data-active:hover:text-primary-foreground!"
-                    render={<Link to={item.url} />}
-                  >
-                    <item.icon />
-                    <span>{item.title}</span>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
+            <nav aria-label="Main">
+              <SidebarMenu>
+                {navMain.map((item) => (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton
+                      variant="default"
+                      isActive={pathname === item.url}
+                      // className="hover:bg-primary/10! hover:text-primary! data-active:bg-primary! data-active:text-primary-foreground! data-active:hover:bg-primary! data-active:hover:text-primary-foreground!"
+                      render={<Link to={item.url} />}
+                    >
+                      <item.icon aria-hidden="true" />
+                      <span>{item.title}</span>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))}
+              </SidebarMenu>
+            </nav>
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>

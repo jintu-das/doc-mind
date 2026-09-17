@@ -156,26 +156,19 @@ export function SemanticSearchPage() {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-4">
-        <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
-          <div className="flex flex-col gap-1">
-            <div className="flex items-center gap-2">
-              <Badge variant="secondary">Vector Index v4.2</Badge>
-              <span className="flex items-center gap-1.5 font-mono text-xs text-muted-foreground">
-                <span
-                  className="size-1.5 rounded-full bg-primary animate-pulse"
-                  aria-hidden="true"
-                />
-                24/24 Synced
-              </span>
-            </div>
-            <h1 className="text-2xl font-semibold">Semantic Search</h1>
-            <p className="max-w-2xl text-sm text-muted-foreground">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="text-xs font-medium text-muted-foreground">
+              WORKSPACE / SEMANTIC SEARCH
+            </p>
+            <h1 className="mt-1 text-2xl font-semibold">Semantic Search</h1>
+            <p className="mt-1 max-w-2xl text-sm text-muted-foreground">
               Find exact and conceptual information across all 24 indexed
               documents using high-dimensional vector embeddings and hybrid
               reranking.
             </p>
           </div>
-          <div className="flex items-center gap-3 self-start bg-muted p-3 md:self-auto">
+          <div className="flex items-center gap-3 bg-muted p-3">
             <div className="flex flex-col">
               <span className="text-xs font-medium text-muted-foreground">
                 Embedding Engine
@@ -199,6 +192,17 @@ export function SemanticSearchPage() {
               />
             </svg>
           </div>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <Badge variant="secondary">Vector Index v4.2</Badge>
+          <span className="flex items-center gap-1.5 font-mono text-xs text-muted-foreground">
+            <span
+              className="size-1.5 rounded-full bg-primary animate-pulse"
+              aria-hidden="true"
+            />
+            24/24 Synced
+          </span>
         </div>
 
         <InputGroup className="h-11">

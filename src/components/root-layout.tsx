@@ -19,7 +19,9 @@ export const RootLayout = () => (
         <span className="text-sm font-semibold">Doc Mind</span>
       </header>
       <main id="main-content" className="h-full bg-background p-4">
-        <Outlet />
+        <div className="mx-auto w-full max-w-[1920px]">
+          <Outlet />
+        </div>
       </main>
     </SidebarInset>
     <TanStackRouterDevtools />

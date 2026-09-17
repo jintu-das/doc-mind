@@ -1,16 +1,20 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import {
   Bot,
+  CircleHelp,
   FileBoxIcon,
   FileText,
   LayoutDashboard,
   Search,
+  Settings,
 } from "lucide-react";
 import * as React from "react";
 
+import { Progress } from "@/components/ui/progress";
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarHeader,
@@ -19,6 +23,11 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from "@/components/ui/sidebar";
+
+const navFooter = [
+  { title: "Settings", icon: Settings },
+  { title: "Help & Docs", icon: CircleHelp },
+];
 
 const navMain = [
   {
@@ -88,6 +97,29 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarFooter>
+        <div className="flex flex-col gap-2 bg-sidebar-accent p-3 group-data-[collapsible=icon]:hidden">
+          <div className="flex items-center justify-between text-xs font-medium text-sidebar-foreground">
+            <span>Storage Usage</span>
+            <span className="text-sidebar-foreground/70">68%</span>
+          </div>
+          <Progress value={68} className="h-1.5" />
+          <div className="flex items-center justify-between text-xs text-sidebar-foreground/70">
+            <span>3.4 GB of 5 GB</span>
+            <span>24 PDFs</span>
+          </div>
+        </div>
+        <SidebarMenu>
+          {navFooter.map((item) => (
+            <SidebarMenuItem key={item.title}>
+              <SidebarMenuButton tooltip={item.title}>
+                <item.icon aria-hidden="true" />
+                <span>{item.title}</span>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          ))}
+        </SidebarMenu>
+      </SidebarFooter>
       <SidebarRail />
     </Sidebar>
   );

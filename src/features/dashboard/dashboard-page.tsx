@@ -3,7 +3,6 @@ import {
   Cloud,
   FileText,
   Filter,
-  Plus,
   RefreshCw,
   Search,
   ShieldCheck,
@@ -34,6 +33,7 @@ import {
   IngestionChart,
 } from "@/features/dashboard/components/lazy-charts";
 import RecentDocumentsTable from "@/features/dashboard/components/recent-documents-table";
+import { UploadDocumentDialog } from "../documents/components/upload-document-dialog";
 
 const stats = [
   {
@@ -91,10 +91,7 @@ export function DashboardPage() {
             <Filter data-icon="inline-start" aria-hidden="true" />
             Filter
           </Button>
-          <Button>
-            <Plus data-icon="inline-start" aria-hidden="true" />
-            Upload Document
-          </Button>
+          <UploadDocumentDialog />
         </div>
       </div>
 

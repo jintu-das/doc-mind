@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Card,
   CardAction,
@@ -33,6 +33,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Link } from "@tanstack/react-router";
 
 const documents = [
   {
@@ -73,12 +74,11 @@ const documents = [
   },
 ];
 
-const statusVariant: Record<string, "secondary" | "outline" | "destructive"> =
-  {
-    Processed: "secondary",
-    Processing: "outline",
-    Failed: "destructive",
-  };
+const statusVariant: Record<string, "secondary" | "outline" | "destructive"> = {
+  Processed: "secondary",
+  Processing: "outline",
+  Failed: "destructive",
+};
 
 export default function RecentDocumentsTable() {
   return (
@@ -89,10 +89,13 @@ export default function RecentDocumentsTable() {
           Real-time status of document indexes and knowledge vectors
         </CardDescription>
         <CardAction>
-          <Button variant="link" size="sm">
+          <Link
+            to="/documents"
+            className={buttonVariants({ variant: "link", size: "sm" })}
+          >
             View all documents
             <ArrowRight data-icon="inline-end" aria-hidden="true" />
-          </Button>
+          </Link>
         </CardAction>
       </CardHeader>
       <CardContent>
@@ -176,9 +179,7 @@ export default function RecentDocumentsTable() {
           <Button variant="outline" size="icon-sm" aria-label="Previous page">
             <ChevronLeft aria-hidden="true" />
           </Button>
-          <span className="px-2 text-xs text-muted-foreground">
-            Page 1 / 6
-          </span>
+          <span className="px-2 text-xs text-muted-foreground">Page 1 / 6</span>
           <Button variant="outline" size="icon-sm" aria-label="Next page">
             <ChevronRight aria-hidden="true" />
           </Button>

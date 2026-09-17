@@ -1,14 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { SemanticSearchPage } from "@/features/semantic-search/semantic-search-page";
 
 export const Route = createFileRoute("/semantic-search")({
-  component: SemanticSearch,
+  component: SemanticSearchPage,
 });
-
-function SemanticSearch() {
-  return (
-    <div className="p-2">
-      <h1 className="text-3xl font-medium">Semantic Search</h1>
-      <p>Search across your documents by meaning, not just keywords.</p>
-    </div>
-  );
-}
